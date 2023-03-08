@@ -27,13 +27,13 @@ public class SysNoticeController {
         return AjaxResult.success(sysNoticeService.list());
     }
 
-    @PreAuthorize("@ps.hasPermi('system:notice:save')")
+
     @PostMapping("/save")
     public AjaxResult saveFacilities(@RequestBody SysNotice sysNotice) {
         sysNoticeService.save(sysNotice);
         return AjaxResult.success();
     }
-    @PreAuthorize("@ps.hasPermi('system:notice:delete')")
+
     @PostMapping("/delete")
     public AjaxResult deleteFacilities(@RequestBody JSONObject jsonObject) {
         if(sysNoticeService.delete(jsonObject.getString("id"))){

@@ -29,13 +29,11 @@ public class SysChargeTypeController {
     }
 
 
-    @PreAuthorize("@ps.hasPermi('system:chargeType:save')")
     @PostMapping("/save")
     public AjaxResult saveChargeType(@RequestBody SysChargeType sysChargeType) {
         sysChargeTypeService.save(sysChargeType);
         return AjaxResult.success();
     }
-    @PreAuthorize("@ps.hasPermi('system:chargeType:delete')")
     @PostMapping("/delete")
     public AjaxResult deleteChargeType(@RequestBody JSONObject jsonObject) {
         if(sysChargeTypeService.delete(jsonObject.getString("id"))){

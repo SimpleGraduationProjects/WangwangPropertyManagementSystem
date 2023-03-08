@@ -29,13 +29,13 @@ public class SysExcelController {
     @Autowired
     private SysExcelService sysExcelService;
 
-    @PreAuthorize("@ps.hasPermi('system:rooms:download')")
+
     @GetMapping("/rooms")
     public void downloadSysRooms(HttpServletResponse httpServletResponse){
         sysExcelService.downloadSysRooms(httpServletResponse);
     }
 
-    @PreAuthorize("@ps.hasPermi('system:user_HouseholdInfo:download')")
+
     @GetMapping("/households")
     public void downloadSysHouseholdInfos(HttpServletResponse httpServletResponse){
         sysExcelService.downloadSysHouseholdInfos(httpServletResponse);

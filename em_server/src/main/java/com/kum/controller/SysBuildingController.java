@@ -32,13 +32,11 @@ public class SysBuildingController {
         return AjaxResult.success(sysBuildingService.nameList());
     }
 
-    @PreAuthorize("@ps.hasPermi('system:building:save')")
     @PostMapping("/save")
     public AjaxResult saveBuilding(@RequestBody SysBuilding sysBuilding) {
         sysBuildingService.save(sysBuilding);
         return AjaxResult.success();
     }
-    @PreAuthorize("@ps.hasPermi('system:building:delete')")
     @PostMapping("/delete")
     public AjaxResult deleteBuilding(@RequestBody JSONObject jsonObject) {
         if(sysBuildingService.delete(jsonObject.getString("id"))){

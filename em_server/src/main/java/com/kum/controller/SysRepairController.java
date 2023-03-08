@@ -35,21 +35,21 @@ public class SysRepairController {
         return AjaxResult.success(sysRepairService.findByUserId(userId));
     }
 
-    @PreAuthorize("@ps.hasPermi('system:repair:save')")
+
     @PostMapping("/add")
     public AjaxResult addFacilities(@RequestBody SysRepair sysRepair) {
         sysRepairService.add(sysRepair);
         return AjaxResult.success();
     }
 
-    @PreAuthorize("@ps.hasPermi('system:repair:examine')")
+
     @PostMapping("/examine")
     public AjaxResult examineFacilities(@RequestBody SysRepair sysRepair) {
         sysRepairService.examine(sysRepair);
         return AjaxResult.success();
     }
 
-    @PreAuthorize("@ps.hasPermi('system:repair:delete')")
+
     @PostMapping("/delete")
     public AjaxResult deleteFacilities(@RequestBody JSONObject jsonObject) {
         if (sysRepairService.delete(jsonObject.getString("id"))) {

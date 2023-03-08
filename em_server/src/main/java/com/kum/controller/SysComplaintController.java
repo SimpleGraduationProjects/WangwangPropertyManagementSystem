@@ -35,19 +35,16 @@ public class SysComplaintController {
         String userId = RequestUtils.getCurrentLoginUser().getUser().getId();
         return AjaxResult.success(sysComplaintService.findByUserId(userId));
     }
-    @PreAuthorize("@ps.hasPermi('system:complaint:save')")
     @PostMapping("/add")
     public AjaxResult addFacilities(@RequestBody SysComplaint sysComplaint) {
         sysComplaintService.add(sysComplaint);
         return AjaxResult.success();
     }
-    @PreAuthorize("@ps.hasPermi('system:complaint:examine')")
     @PostMapping("/examine")
     public AjaxResult examineFacilities(@RequestBody SysComplaint sysComplaint) {
         sysComplaintService.examine(sysComplaint);
         return AjaxResult.success();
     }
-    @PreAuthorize("@ps.hasPermi('system:complaint:delete')")
     @PostMapping("/delete")
     public AjaxResult deleteFacilities(@RequestBody JSONObject jsonObject) {
         if(sysComplaintService.delete(jsonObject.getString("id"))){

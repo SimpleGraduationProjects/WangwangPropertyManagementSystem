@@ -28,13 +28,13 @@ public class SysFacilitiesController {
     }
 
 
-    @PreAuthorize("@ps.hasPermi('system:facilities:save')")
+
     @PostMapping("/save")
     public AjaxResult saveFacilities(@RequestBody SysFacilities sysFacilities) {
         sysFacilitiesService.save(sysFacilities);
         return AjaxResult.success();
     }
-    @PreAuthorize("@ps.hasPermi('system:facilities:delete')")
+
     @PostMapping("/delete")
     public AjaxResult deleteFacilities(@RequestBody JSONObject jsonObject) {
         if(sysFacilitiesService.delete(jsonObject.getString("id"))){

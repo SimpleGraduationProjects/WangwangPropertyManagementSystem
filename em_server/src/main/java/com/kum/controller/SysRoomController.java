@@ -33,13 +33,13 @@ public class SysRoomController {
         return AjaxResult.success(sysRoomService.unitNameList(buildingName));
     }
 
-    @PreAuthorize("@ps.hasPermi('system:room:save')")
+
     @PostMapping("/save")
     public AjaxResult saveFacilities(@RequestBody SysRoom sysRoom) {
         sysRoomService.save(sysRoom);
         return AjaxResult.success();
     }
-    @PreAuthorize("@ps.hasPermi('system:room:delete')")
+
     @PostMapping("/delete")
     public AjaxResult deleteFacilities(@RequestBody JSONObject jsonObject) {
         if(sysRoomService.delete(jsonObject.getString("id"))){

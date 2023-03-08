@@ -25,7 +25,7 @@ public class SysOptionsController {
     public AjaxResult getOptions(@PathVariable("id") String id) {
         return AjaxResult.success(sysOptionsService.findById(id));
     }
-    @PreAuthorize("@ps.hasPermi('system:options:save')")
+
     @PostMapping("/save")
     public AjaxResult saveOptions(@RequestBody SysOptions sysOptions) {
         sysOptionsService.save(sysOptions);

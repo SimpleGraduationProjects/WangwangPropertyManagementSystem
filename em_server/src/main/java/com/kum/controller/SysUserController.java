@@ -38,11 +38,11 @@ public  class SysUserController {
      * @return
      */
     @GetMapping("/list")
-    @PreAuthorize("@ps.hasPermi('system:user:list')")
+
     public AjaxResult list() {
         return AjaxResult.success(sysUserService.list());
     }
-//    @PreAuthorize("@ps.hasPermi('system:user_admin:list')")
+
     @GetMapping("/admin/list")
     public AjaxResult listOfAdmin() {
         return AjaxResult.success(sysUserService.findByUserRole(UserType.ADMIN));
@@ -92,14 +92,12 @@ public  class SysUserController {
      * @param sysUserInfoData
      */
     @PostMapping("/household/save")
-    @PreAuthorize("@ps.hasPermi('system:user_householdInfo:save')")
     public AjaxResult HouseholdInfoSave(@RequestBody SysUserInfoData sysUserInfoData) {
         sysUserService.HouseholdInfoSave(sysUserInfoData);
         return AjaxResult.success();
     }
 
     @PostMapping("/household/delete")
-    @PreAuthorize("@ps.hasPermi('system:user_householdInfo:delete')")
     public AjaxResult HouseholdInfoDelete(@RequestBody SysUserInfo sysUserInfo) {
         sysUserService.HouseholdInfoDelete(sysUserInfo);
         return AjaxResult.success();
